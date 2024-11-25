@@ -17,7 +17,7 @@ function division($a, $b){
     return $a / $b;
 }
 
-if($_POST['input'] && $_POST['input2'] && $_POST['options']) {
+if(isset($_POST['input']) && isset($_POST['input2']) && isset($_POST['options'])) {    
     if($_POST["options"] == "+"){
         echo "Resultado: ";
         echo addition($_POST["input"], $_POST["input2"]);
@@ -43,12 +43,12 @@ if($_POST['input'] && $_POST['input2'] && $_POST['options']) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
 </head>
 <body>
     <form method="post">
-        <input type="text" name="input">
-        <input type="text" name="input2">
+        <input type="number" name="input">
+        <input type="number" name="input2">
         <input type="submit">
         <select name="options">
             <option value="+">Adição</option>
