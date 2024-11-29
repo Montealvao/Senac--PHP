@@ -5,16 +5,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tarefas</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <form method="post">
+        <h1>Tarefas</h1>
         <input type="text" name="input" placeholder="teste">
-        <button type="submit" name="add">Adicionar</button>
-        <button type="submit" name="remove">Remover</button>
+        <button type="submit" name="add">Adicionar Tarefa</button>
+        <button type="submit" name="remove">Remover Tarefa</button>
         <button type="submit" name="view">Ver lista</button>
-        <button type="submit" name="conclude">Concluir</button>
-    </form>    
+        <button type="submit" name="conclude">Concluir Tarefa</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>    
 
     <?php
     require "./task-manager.php";
@@ -22,7 +39,9 @@
         if(isset($_POST['input'])){
             $name = $_POST['input'];
             if(isset($_POST["add"])){
-                echo add_task($name);
+                if(($name != "")){
+                    echo add_task($name);
+            }
             }
             
             else if(isset($_POST["remove"])){
@@ -34,9 +53,9 @@
                 echo tasks_array();
             }
             
-            // else if($_POST["conclude"]){
-            //     echo task_conclude_marker();
-            // }
+            else if(isset($_POST["conclude"])){
+                echo task_conclude_marker($name);
+            }
         }
     }
     ?>
