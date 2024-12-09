@@ -26,19 +26,28 @@
                 <td>Id</td>
                 <td>Nome</td>
                 <td>Senha</td>
+                <td>Ações</td>
             </tr>
         </thead>
         <tbody>
            <?php 
             foreach ($users as $item){
-           ?>
-           <tr>
-                <td><?php echo $item["id"]?></td>
-                <td><?php echo $item["name"]?></td>
-                <td><?php echo $item["password"]?></td>
-           <?php
+                echo "
+                    <tr>
+                        <td>{$item['id']}</td>
+                        <td>{$item['name']}</td>
+                        <td>{$item['password']}</td>
+                        <td><a href='../signUp/index.php?id={$item['id']}'><button>Editar</button></a>
+                        <form action='../../backend/router/userRouter.php?action=delete' method='post'>
+                        <input type='hidden' name='user_id' value='{$item['id']}'>
+                        <button type='submit' name='delete'>Deletar</button></form>
+                        </td>                    
+                    </tr>
+                ";
             }
-           ?>
+
+
+            ?>
         </tbody>
     </table>
 </body>
